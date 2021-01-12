@@ -3,13 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <link rel="stylesheet" href="./assets/css/style.css" />
-  <title>Document</title>
+  <title>Weather Dashboard</title>
 </head>
 <body>
+  <header class="hero">
+    <h1 class="app-title"><i class="fas fa-cloud-sun"></i>Weather Dashboard</h1>
+  </header>
 
+  <main class="flex-row justify-space-between">
+    <div class="col-12 col-md-4">
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search for a City:</h3>
+        <form id="user-form" class="card-body">
+          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
+          <button type="submit"class="btn btn-primary"><span class="fas fa-search"></span></button>
+          <br><br>
+          <ul class="list-group">
+            <li class="list-group-item">Chicago</li>
+            <li class="list-group-item">Chicago</li>
+            <li class="list-group-item">Chicago</li>
+            <li class="list-group-item">Chicago</li>
+            <li class="list-group-item">Chicago</li>
+            <li class="list-group-item">Chicago</li>
+            <li class="list-group-item">Chicago</li>
+          </ul>
+
+
+        </form>
+      </div>
+
+    </div>
+
+    <div class="col-12 col-md-8">
+
+    </div>
+
+  </main>
+
+  <!-- javascript -->
   <script src="./assets/js/homepage.js"></script>
 </body>
 </html>
