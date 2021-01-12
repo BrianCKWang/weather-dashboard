@@ -14,14 +14,20 @@
     <h1 class="app-title"><i class="fas fa-cloud-sun"></i>Weather Dashboard</h1>
   </header>
 
-  <main class="flex-row justify-space-between">
-    <div class="col-12 col-md-4">
+  <main class="flex-row">
+
+    <section class="col-12 col-md-4">
       <div class="card">
+
         <h3 class="card-header text-uppercase">Search for a City:</h3>
+
         <form id="user-form" class="card-body">
-          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
-          <button type="submit"class="btn btn-primary"><span class="fas fa-search"></span></button>
-          <br><br>
+          <div class="input-group">
+            <input name="username" id="username" type="text" autofocus="true" class="form-control form-input" />
+            <button type="submit"class="btn btn-primary"><span class="fas fa-search"></span></button>
+          </div>
+
+          <p></p>
           <ul class="list-group">
             <li class="list-group-item">Chicago</li>
             <li class="list-group-item">Chicago</li>
@@ -29,22 +35,90 @@
             <li class="list-group-item">Chicago</li>
             <li class="list-group-item">Chicago</li>
             <li class="list-group-item">Chicago</li>
-            <li class="list-group-item">Chicago</li>
           </ul>
-
-
         </form>
+
       </div>
+    </section>
 
-    </div>
+    <section class="col-12 col-md-8">
+      <!-- <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
+      <div id="repos-container" class="list-group"></div> -->
+      <h4>Today:</h4>
 
-    <div class="col-12 col-md-8">
+      <article class="card">
+        <div class="card-body">
+          <h5>Card Title</h5>
+          <p><i class="fas fa-cloud-sun"></i></p>
+          <p>Temp: 0C</p>
+          <p>Humidity: 30%</p>
+          <p>Wind Speed: 4.7 MPH</p>
+          <p>UV Index: 9000</p>
+        </div>
+      </article>
 
-    </div>
+      <h4>5-Day Forecast:</h4>
+      <section class="row no-gutters">
+        
+        <div class="col">
+          <div class="card text-white bg-primary mr-1 ml-1">
+            <div class="card-body">
+              <h5 class="card-title">Card Title</h5>
+              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
+              <p class="card-text">Temp: 0C</p>
+              <p class="card-text">Humidity: 30%</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-white bg-primary mr-1 ml-1">
+            <div class="card-body">
+              <h5 class="card-title">Card Title</h5>
+              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
+              <p class="card-text">Temp: 0C</p>
+              <p class="card-text">Humidity: 30%</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-white bg-primary mr-1 ml-1">
+            <div class="card-body">
+              <h5 class="card-title">Card Title</h5>
+              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
+              <p class="card-text">Temp: 0C</p>
+              <p class="card-text">Humidity: 30%</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-white bg-primary mr-1 ml-1">
+            <div class="card-body">
+              <h5 class="card-title">Card Title</h5>
+              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
+              <p class="card-text">Temp: 0C</p>
+              <p class="card-text">Humidity: 30%</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card text-white bg-primary mr-1 ml-1">
+            <div class="card-body">
+              <h5 class="card-title">Card Title</h5>
+              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
+              <p class="card-text">Temp: 0C</p>
+              <p class="card-text">Humidity: 30%</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+    </section>
 
   </main>
 
   <!-- javascript -->
-  <script src="./assets/js/homepage.js"></script>
+  <script src="./assets/js/mainpage.js"></script>
 </body>
 </html>
