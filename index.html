@@ -47,12 +47,12 @@
       <h4>Today:</h4>
 
       <article class="card">
-        <div class="card-body">
-          <h5>Card Title <img src="./assets/icons/01d.png" width="50px" height="50px" alt></h5>  
-          <p>Temp: 0C</p>
-          <p>Humidity: 30%</p>
-          <p>Wind Speed: 4.7 MPH</p>
-          <p>UV Index: 9000</p>
+        <div id="current-day-card" class="card-body current-day-icon">
+          <h5 class="date"><span>Loading</span> <img src="./assets/icons/01d.png" alt></h5>  
+          <p class="temp">Temp: <span>Loading</span><span>&#176;</span>F</p>
+          <p class="humidity">Humidity: <span>Loading</span>%</p>
+          <p class="wind">Wind Speed: <span>Loading</span> MPH</p>
+          <p class="uv">UV Index: <span class="badge">Loading</span></p>
         </div>
       </article>
 
@@ -60,66 +60,67 @@
       <section class="row no-gutters">
         
         <div class="col">
-          <div class="card text-white bg-primary mr-1 ml-1">
-            <div class="card-body">
-              <h5 class="card-title">Card Title</h5>
-              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
-              <p class="card-text">Temp: 0C</p>
-              <p class="card-text">Humidity: 30%</p>
+          <article class="card text-white bg-primary mr-1 ml-1">
+            <div id="day-1" class="card-body forecast-icon">
+              <h5 class="card-title date">Loading</h5>
+              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: 0C</p>
+              <p class="card-text humidity">Humidity: 30%</p>
             </div>
-          </div>
+          </article>
         </div>
+
         <div class="col">
-          <div class="card text-white bg-primary mr-1 ml-1">
-            <div class="card-body">
-              <h5 class="card-title">Card Title</h5>
-              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
-              <p class="card-text">Temp: 0C</p>
-              <p class="card-text">Humidity: 30%</p>
+          <article class="card text-white bg-primary mr-1 ml-1">
+            <div id="day-2" class="card-body forecast-icon">
+              <h5 class="card-title date">Card Title</h5>
+              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: 0C</p>
+              <p class="card-text humidity">Humidity: 30%</p>
             </div>
-          </div>
+          </article>
         </div>
+
         <div class="col">
-          <div class="card text-white bg-primary mr-1 ml-1">
-            <div class="card-body">
-              <h5 class="card-title">Card Title</h5>
-              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
-              
-              
-              <p class="card-text">Temp: 0C</p>
-              <p class="card-text">Humidity: 30%</p>
+          <article class="card text-white bg-primary mr-1 ml-1">
+            <div id="day-3"class="card-body forecast-icon">
+              <h5 class="card-title date">Card Title</h5>
+              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: 0C</p>
+              <p class="card-text humidity">Humidity: 30%</p>
             </div>
-          </div>
+          </article>
         </div>
+
         <div class="col">
-          <div class="card text-white bg-primary mr-1 ml-1">
-            <div class="card-body">
-              <h5 class="card-title">Card Title</h5>
-              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
-              <p class="card-text">Temp: 0C</p>
-              <p class="card-text">Humidity: 30%</p>
+          <article class="card text-white bg-primary mr-1 ml-1">
+            <div id="day-4" class="card-body forecast-icon">
+              <h5 class="card-title date">Card Title</h5>
+              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: 0C</p>
+              <p class="card-text humidity">Humidity: 30%</p>
             </div>
-          </div>
+          </article>
         </div>
+
         <div class="col">
-          <div class="card text-white bg-primary mr-1 ml-1">
-            <div class="card-body">
-              <h5 class="card-title">Card Title</h5>
-              <p class="card-text"><i class="fas fa-cloud-sun"></i></p>
-              <p class="card-text">Temp: 0C</p>
-              <p class="card-text">Humidity: 30%</p>
+          <article class="card text-white bg-primary mr-1 ml-1">
+            <div id="day-5" class="card-body forecast-icon">
+              <h5 class="card-title date">Card Title</h5>
+              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: 0C</p>
+              <p class="card-text humidity">Humidity: 30%</p>
             </div>
-          </div>
+          </article>
         </div>
       </section>
-
-
-
     </section>
 
   </main>
 
   <!-- javascript -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <script src="./assets/js/mainpage.js"></script>
 </body>
 </html>
