@@ -11,7 +11,7 @@
 </head>
 <body>
   <header class="hero">
-    <h1 class="app-title"><i class="fas fa-cloud-sun"></i>Weather Dashboard</h1>
+    <h1 class="app-title"></i>Weather Dashboard</h1>
   </header>
 
   <main class="flex-row">
@@ -23,93 +23,88 @@
 
         <form id="user-form" class="card-body">
           <div class="input-group">
-            <input name="username" id="username" type="text" autofocus="true" class="form-control form-input" />
+            <input name="cityname" id="cityname" type="text" autofocus="true" class="form-control form-input" />
             <button type="submit"class="btn btn-primary"><span class="fas fa-search"></span></button>
           </div>
 
           <p></p>
-          <ul class="list-group">
-            <li class="list-group-item">Chicago</li>
-            <li class="list-group-item">Chicago</li>
-            <li class="list-group-item">Chicago</li>
-            <li class="list-group-item">Chicago</li>
-            <li class="list-group-item">Chicago</li>
-            <li class="list-group-item">Chicago</li>
+          <ul id="search-history" class="list-group">
+            <!-- <li class="list-group-item">Chicago</li> -->
           </ul>
         </form>
 
       </div>
     </section>
 
-    <section class="col-12 col-md-8">
+    <section id="info-section" class="col-12 col-md-8">
       <!-- <h2 class="subtitle">Showing Repositories for: <span id="repo-search-term"></span></h2>
       <div id="repos-container" class="list-group"></div> -->
       <h4>Today:</h4>
 
       <article class="card">
         <div id="current-day-card" class="card-body current-day-icon">
-          <h5 class="date"><span>Loading</span> <img src="./assets/icons/01d.png" alt></h5>  
-          <p class="temp">Temp: <span>Loading</span><span>&#176;</span>F</p>
+          <h6 class="date"><span>Loading</span> <img class="icon" src="./assets/icons/01d.png" alt></h6>  
+          <p class="temp">Temp: <span>Loading</span>&#176;C</p>
           <p class="humidity">Humidity: <span>Loading</span>%</p>
           <p class="wind">Wind Speed: <span>Loading</span> MPH</p>
           <p class="uv">UV Index: <span class="badge">Loading</span></p>
         </div>
       </article>
-
+      <p></p>
       <h4>5-Day Forecast:</h4>
       <section class="row no-gutters">
         
         <div class="col">
           <article class="card text-white bg-primary mr-1 ml-1">
-            <div id="day-1" class="card-body forecast-icon">
-              <h5 class="card-title date">Loading</h5>
-              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
-              <p class="card-text temp">Temp: 0C</p>
-              <p class="card-text humidity">Humidity: 30%</p>
+            <div id="day-1" class="card-body forecast-card forecast-icon">
+              <h6 class="card-title date">Loading</h6>
+              <p class="card-text icon"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: <span>Loading</span>&#176;C</p>
+              <p class="card-text humidity">Humidity: <span>Loading</span>%</p>
             </div>
           </article>
         </div>
 
         <div class="col">
           <article class="card text-white bg-primary mr-1 ml-1">
-            <div id="day-2" class="card-body forecast-icon">
-              <h5 class="card-title date">Card Title</h5>
-              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
-              <p class="card-text temp">Temp: 0C</p>
-              <p class="card-text humidity">Humidity: 30%</p>
+            <div id="day-2" class="card-body forecast-card forecast-icon">
+              <h6 class="card-title date">Card Title</h6>
+              <p class="card-text icon"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: <span>Loading</span>&#176;C</p>
+              <p class="card-text humidity">Humidity: <span>Loading</span>%</p>
             </div>
           </article>
         </div>
 
         <div class="col">
           <article class="card text-white bg-primary mr-1 ml-1">
-            <div id="day-3"class="card-body forecast-icon">
-              <h5 class="card-title date">Card Title</h5>
-              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
-              <p class="card-text temp">Temp: 0C</p>
-              <p class="card-text humidity">Humidity: 30%</p>
+            <div id="day-3"class="card-body forecast-card forecast-icon">
+              <h6 class="card-title date">Card Title</h6>
+              <p class="card-text icon"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: <span>Loading</span>&#176;C</p>
+              <p class="card-text humidity">Humidity: <span>Loading</span>%</p>
             </div>
           </article>
         </div>
 
         <div class="col">
           <article class="card text-white bg-primary mr-1 ml-1">
-            <div id="day-4" class="card-body forecast-icon">
-              <h5 class="card-title date">Card Title</h5>
-              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
-              <p class="card-text temp">Temp: 0C</p>
-              <p class="card-text humidity">Humidity: 30%</p>
+            <div id="day-4" class="card-body forecast-card forecast-icon">
+              <h6 class="card-title date">Card Title</h6>
+              <p class="card-text icon"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: <span>Loading</span>&#176;C</p>
+              <p class="card-text humidity">Humidity: <span>Loading</span>%</p>
             </div>
           </article>
         </div>
 
         <div class="col">
           <article class="card text-white bg-primary mr-1 ml-1">
-            <div id="day-5" class="card-body forecast-icon">
-              <h5 class="card-title date">Card Title</h5>
-              <p class="card-text"> <img src="./assets/icons/01d.png" alt></p>
-              <p class="card-text temp">Temp: 0C</p>
-              <p class="card-text humidity">Humidity: 30%</p>
+            <div id="day-5" class="card-body forecast-card forecast-icon">
+              <h6 class="card-title date">Card Title</h6>
+              <p class="card-text icon"> <img src="./assets/icons/01d.png" alt></p>
+              <p class="card-text temp">Temp: <span>Loading</span>&#176;C</p>
+              <p class="card-text humidity">Humidity: <span>Loading</span>%</p>
             </div>
           </article>
         </div>
