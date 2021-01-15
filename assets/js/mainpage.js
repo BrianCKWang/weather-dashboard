@@ -40,7 +40,7 @@ var updateSearchHistory = function() {
 
 var  getCurrentDay_Main = function(cityName, apiKey) {
   // use current day to get coord for one call api
-  fetch("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + apiKey)
+  fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + apiKey)
   .then(function(response){
     if(response.ok){
       return response.json();
@@ -51,7 +51,7 @@ var  getCurrentDay_Main = function(cityName, apiKey) {
   })
   .then(function(data) {
     // one call api for all weather information
-    return fetch("http://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&exclude=minutely,hourly,alerts&units=metric&appid=" + apiKey);
+    return fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&exclude=minutely,hourly,alerts&units=metric&appid=" + apiKey);
   })
   .then(function(response) {
     if(response.ok){
