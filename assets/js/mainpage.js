@@ -1,4 +1,4 @@
-var cityName = "Chicago";
+// var cityName = "Chicago";
 var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#cityname");
 var infoSectionEl = document.querySelector("#info-section");
@@ -9,6 +9,7 @@ var maxSearchHistory = 8;
 var localStorageName = "brianckwang-weather-dashboard-items";
 var firstPass = false;
 
+// local storage handling
 var loadSearchHistory = function() {
   searchHistory = JSON.parse(localStorage.getItem(localStorageName));
 
@@ -19,7 +20,8 @@ var loadSearchHistory = function() {
   else{
     searchHistory.forEach(function(item, index){
       // console.log(item);
-      $(searchHistoryEl).append('<li class="list-group-item">' + item + '</li>');
+      // 
+      $(searchHistoryEl).append('<li class="list-group-item"><a href="#user-form">' + item + '</a></li>');
     })
   }
 };
@@ -28,9 +30,9 @@ var saveSearchHistory = function() {
   localStorage.setItem(localStorageName, JSON.stringify(searchHistory));
 };
 
-var updateSearchHistory = function() {
+var updateSearchHistory = function(cityName) {
   searchHistory.unshift(cityName);
-  $(searchHistoryEl).prepend('<li class="list-group-item">' + cityName + '</li>');
+  $(searchHistoryEl).prepend('<li class="list-group-item"><a href="#user-form">' + cityName + '</a></li>');
   if(searchHistory.length > maxSearchHistory){
     searchHistory.pop();
     $(searchHistoryEl).children().last().remove();
@@ -38,8 +40,9 @@ var updateSearchHistory = function() {
   saveSearchHistory();
 }
 
-var  getCurrentDay_Main = function(cityName, apiKey) {
+var  getWeatherData = function(cityName, apiKey) {
   // use current day to get coord for one call api
+  console.log(cityName);
   fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + apiKey)
   .then(function(response){
     if(response.ok){
@@ -63,9 +66,9 @@ var  getCurrentDay_Main = function(cityName, apiKey) {
   })
   .then(function(data) {
     // api call successful, display all information and update search history
-    displayWeatherInfo(data);
+    displayWeatherInfo(cityName, data);
     if(firstPass){
-      updateSearchHistory();
+      updateSearchHistory(cityName);
     }
     firstPass = true;
     
@@ -78,6 +81,7 @@ var  getCurrentDay_Main = function(cityName, apiKey) {
 
 };
 
+// utility functions
 // this function takes a string and return words all capitalized
 var capitalizeAll = function(str) {
   var splitStr = str.toLowerCase().split(' ');
@@ -89,7 +93,8 @@ var capitalizeAll = function(str) {
   return splitStr.join(' '); 
 }
 
-var displayDates = function() {
+// display functions
+var displayDates = function(cityName) {
   $(currentDayCardEl).find(".date span").text(cityName + " (" + moment().format('ddd, YYYY/MM/DD') + ")");
   for(var i = 1; i <= 5; i++){
     var forecastDayEl = document.querySelector("#day-" + i);
@@ -97,8 +102,10 @@ var displayDates = function() {
   }
 }
 
-var displayWeatherInfo = function(data) {
+var displayWeatherInfo = function(cityName, data) {
   // update current day card information
+  displayDates(cityName);
+
   $(currentDayCardEl).find(".date span").text(capitalizeAll(cityName) + " (" + moment().format('ddd, YYYY/MM/DD') + ")");
   $(currentDayCardEl).find(".date img").attr("src", "./assets/icons/" + data.current.weather[0].icon + ".png");
   $(currentDayCardEl).find(".temp span").text(data.current.temp);
@@ -128,32 +135,36 @@ var displayWeatherInfo = function(data) {
   }
 }
 
+// event handlers
+var apiKey = "2e445b75f57f2c3f031b78969d6f739f";
+var searchHistoryItemClickHandler = function(event) {
+  getWeatherData(event.toElement.textContent, apiKey);
+}
+
 var formSubmitHandler = function(event) {
   event.preventDefault();
   // get value from input element
-  if(cityName.toLowerCase() != nameInputEl.value.trim().toLowerCase()){
-    cityName = nameInputEl.value.trim();
+  cityName = nameInputEl.value.trim();
 
-    if (cityName) {
-      getCurrentDay_Main(cityName, apiKey);
-      nameInputEl.value = "";
-    } else {
-      alert("Please enter a city name");
-    }
+  if (cityName) {
+    getWeatherData(cityName, apiKey);
+  } else {
+    alert("Please enter a city name");
   }
+
   nameInputEl.value = "";
 };
 
-var apiKey = "2e445b75f57f2c3f031b78969d6f739f";
-
-displayDates();
+// main
 loadSearchHistory();
 if(searchHistory.length > 0){
   cityName = searchHistory[0];
-  getCurrentDay_Main(searchHistory[0], apiKey);
+  getWeatherData(searchHistory[0], apiKey);
 }
 else{
   firstPass = true;
 }
 
+// listener events
 userFormEl.addEventListener("submit", formSubmitHandler);
+searchHistoryEl.addEventListener("click", searchHistoryItemClickHandler);
