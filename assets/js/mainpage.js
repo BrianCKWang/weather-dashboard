@@ -152,5 +152,8 @@ if(searchHistory.length > 0){
   cityName = searchHistory[0];
   getCurrentDay_Main(searchHistory[0], apiKey);
 }
+else{
+  firstPass = true;
+}
 
 userFormEl.addEventListener("submit", formSubmitHandler);
