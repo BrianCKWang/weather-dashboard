@@ -48,8 +48,6 @@ h6 {
   font-size: 3rem;
   background-color: var(--dark);
   color: var(--primary);
-  /* padding: 0 3px; */
-  /* display: inline-block; */
   border-radius: var(--border-radius);
 }
 
@@ -78,28 +76,29 @@ h6 {
   visibility: hidden;
 }
 
-.current-day-icon img {
-  width: 50px; 
-  height: 50px;
-}
-
-.forecast-icon img {
-  width: 30px; 
-  height: 30px;
-}
-
 #current-day-card .uv span {
   font-size: 1.2em;
 }
 
-.forecast-card .temp,
-.forecast-card .humidity {
-  font-size: 0.8em;
+.current-day-icon img {
+  width: 80px; 
+  height: 80px;
 }
 
-/* #current-day-card .uv {
-  background-color: rgb(44, 240, 44);
-} */
+.forecast-icon img {
+  width: 80px; 
+  height: 80px;
+}
+
+.forecast-card .temp,
+.forecast-card .humidity {
+  font-size: 1.3em;
+}
+
+#current-day-card,
+.forecast-card{
+  text-align: center;
+}
 
 /* FLEX CONTENT */
 .flex-row {
@@ -199,6 +198,7 @@ h6 {
 
 /* col-sm */
 @media screen and (min-width: 640px) {
+  
   .col-sm-1 {
     flex: 0 0 calc(100% * 1 / 12 - 2%);
   }
@@ -251,6 +251,8 @@ h6 {
 
 /* col-md */
 @media screen and (min-width: 768px) {
+  
+
   .col-md-1 {
     flex: 0 0 calc(100% * 1 / 12 - 2%);
   }
@@ -302,6 +304,26 @@ h6 {
 
 /* col-lg */
 @media screen and (min-width: 992px) {
+  #current-day-card,
+  .forecast-card{
+    text-align: left;
+  }
+
+  .current-day-icon img {
+    width: 50px; 
+    height: 50px;
+  }
+  
+  .forecast-icon img {
+    width: 50px; 
+    height: 50px;
+  }
+  
+  .forecast-card .temp,
+  .forecast-card .humidity {
+    font-size: 0.8em;
+  }
+
   .col-lg-1 {
     flex: 0 0 calc(100% * 1 / 12 - 2%);
   }

@@ -40,8 +40,7 @@ var updateSearchHistory = function() {
 }
 
 var  getCurrentDay_Main = function(cityName, apiKey) {
-  // make a request to the url
-
+  // use current day to get coord for one call api
   fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + apiKey)
   .then(function(response){
     if(response.ok){
@@ -52,6 +51,7 @@ var  getCurrentDay_Main = function(cityName, apiKey) {
     }
   })
   .then(function(data) {
+    // one call api for all weather information
     return fetch("http://api.openweathermap.org/data/2.5/onecall?lat=" + data.coord.lat + "&lon=" + data.coord.lon + "&exclude=minutely,hourly,alerts&units=metric&appid=" + apiKey);
   })
   .then(function(response) {
@@ -63,6 +63,7 @@ var  getCurrentDay_Main = function(cityName, apiKey) {
     }
   })
   .then(function(data) {
+    // api call successful, display all information and update search history
     displayWeatherInfo(data);
     if(firstPass){
       updateSearchHistory();
@@ -73,11 +74,21 @@ var  getCurrentDay_Main = function(cityName, apiKey) {
     
   })
   .catch(function(error) {
-    // Notice this `.catch()` getting chained onto the end of the `.then()` method
     console.log('Unable to connect to OpenWeather', error);
   });
 
 };
+
+// this function takes a string and return words all capitalized
+var capitalizeAll = function(str) {
+  var splitStr = str.toLowerCase().split(' ');
+
+  for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+  }
+
+  return splitStr.join(' '); 
+}
 
 var displayDates = function() {
   $(currentDayCardEl).find(".date span").text(cityName + " (" + moment().format('ddd, YYYY/MM/DD') + ")");
@@ -88,17 +99,16 @@ var displayDates = function() {
 }
 
 var displayWeatherInfo = function(data) {
-  // moment().unix(data.current.dt).format('ddd, YYYY/MM/DD')
-  // console.log(data);
-  $(currentDayCardEl).find(".date span").text(cityName.charAt(0).toUpperCase() + cityName.slice(1) + " (" + moment().format('ddd, YYYY/MM/DD') + ")");
+  // update current day card information
+  $(currentDayCardEl).find(".date span").text(capitalizeAll(cityName) + " (" + moment().format('ddd, YYYY/MM/DD') + ")");
   $(currentDayCardEl).find(".date img").attr("src", "./assets/icons/" + data.current.weather[0].icon + ".png");
   $(currentDayCardEl).find(".temp span").text(data.current.temp);
   $(currentDayCardEl).find(".humidity span").text(data.current.humidity );
   $(currentDayCardEl).find(".wind span").text(data.current.wind_speed);
   
   $(currentDayCardEl).find(".uv span").text(data.current.uvi);
-  $(currentDayCardEl).find(".uv span").removeClass("badge-success badge-warning badge-danger");
 
+  $(currentDayCardEl).find(".uv span").removeClass("badge-success badge-warning badge-danger");
   if(data.current.uvi < 2){
     $(currentDayCardEl).find(".uv span").addClass("badge-success");
   }
@@ -109,12 +119,9 @@ var displayWeatherInfo = function(data) {
     $(currentDayCardEl).find(".uv span").addClass("badge-danger");
   }
 
+  // update forecast cards information
   for(var i = 1; i <= 5; i++){
     var forecastDayEl = document.querySelector("#day-" + i);
-    // src="./assets/icons/01d.png"
-
-    // console.log("./assets/icons/" + data.daily[i].weather.icon + ".png");
-    // console.log(data.daily[i].weather[0].icon);
 
     $(forecastDayEl).find(".icon img").attr("src", "./assets/icons/" + data.daily[i].weather[0].icon + ".png");
     $(forecastDayEl).find(".temp span").text(data.daily[i].temp.day);
@@ -122,12 +129,10 @@ var displayWeatherInfo = function(data) {
   }
 }
 
-
-
 var formSubmitHandler = function(event) {
   event.preventDefault();
   // get value from input element
-  if(cityName != nameInputEl.value.trim()){
+  if(cityName.toLowerCase() != nameInputEl.value.trim().toLowerCase()){
     cityName = nameInputEl.value.trim();
 
     if (cityName) {
@@ -146,9 +151,5 @@ if(searchHistory.length > 0){
   cityName = searchHistory[0];
   getCurrentDay_Main(searchHistory[0], apiKey);
 }
-
-
-// $(infoSectionEl).css("visibility", "visible");
-// getCurrentDay_Main(cityName, apiKey);
 
 userFormEl.addEventListener("submit", formSubmitHandler);
