@@ -1,5 +1,4 @@
 var cityName = "Chicago";
-var apiKey = "2e445b75f57f2c3f031b78969d6f739f";
 var userFormEl = document.querySelector("#user-form");
 var nameInputEl = document.querySelector("#cityname");
 var infoSectionEl = document.querySelector("#info-section");
@@ -144,6 +143,8 @@ var formSubmitHandler = function(event) {
   }
   nameInputEl.value = "";
 };
+
+var apiKey = "2e445b75f57f2c3f031b78969d6f739f";
 
 displayDates();
 loadSearchHistory();
