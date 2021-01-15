@@ -40,7 +40,7 @@ var updateSearchHistory = function() {
 
 var  getCurrentDay_Main = function(cityName, apiKey) {
   // use current day to get coord for one call api
-  fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + apiKey)
+  fetch("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=metric&appid=" + apiKey)
   .then(function(response){
     if(response.ok){
       return response.json();
